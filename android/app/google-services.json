@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "83757875514",
+    "project_id": "drawli-android",
+    "storage_bucket": "drawli-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83757875514:android:be4d713f228c8b1f359003",
+        "android_client_info": {
+          "package_name": "com.drawli.drawli_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDeGm_Qy2jUaIp0jKvCEANdHiPVdExqKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
