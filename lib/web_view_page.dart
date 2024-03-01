@@ -239,6 +239,21 @@ class _WebViewPageState extends State<WebViewPage> {
                   }
                 },
               );
+
+              // ex) window.flutter_inappwebview.callHandler('openBrowser', url);
+              controller.addJavaScriptHandler(
+                handlerName: "openBrowser",
+                callback: (data) async {
+                  if (data.isNotEmpty) {
+                    final String url = data[0];
+                    final Uri uri = Uri.parse(url);
+
+                    if (await canLaunchUrl(uri)) {
+                      await launchUrl(uri);
+                    }
+                  }
+                },
+              );
             },
             onLoadStart: (controller, url) {
               setState(() {
