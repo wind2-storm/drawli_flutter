@@ -93,56 +93,59 @@ class _WebViewPageState extends State<WebViewPage> {
   /// web_view 하단 리모컨
   /// 뒤로가기, 앞으로가기, 새로고침, 창닫기 처리
   Widget _navigationBar() {
-    return Row(
-      children: [
-        // [뒤로가기]
-        Expanded(
-          child: GestureDetector(
-            onTap: _back,
-            child: const SizedBox(
-              height: 60,
-              child: Icon(Icons.arrow_back),
+    return Padding(
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+      child: Row(
+        children: [
+          // [뒤로가기]
+          Expanded(
+            child: GestureDetector(
+              onTap: _back,
+              child: const SizedBox(
+                height: 60,
+                child: Icon(Icons.arrow_back),
+              ),
             ),
           ),
-        ),
-        // [뒤로가기]
+          // [뒤로가기]
 
-        // [앞으로가기]
-        Expanded(
-          child: GestureDetector(
-            onTap: _forward,
-            child: const SizedBox(
-              height: 60,
-              child: Icon(Icons.arrow_forward),
+          // [앞으로가기]
+          Expanded(
+            child: GestureDetector(
+              onTap: _forward,
+              child: const SizedBox(
+                height: 60,
+                child: Icon(Icons.arrow_forward),
+              ),
             ),
           ),
-        ),
-        // [앞으로가기]
+          // [앞으로가기]
 
-        // [새로고침]
-        Expanded(
-          child: GestureDetector(
-            onTap: _refresh,
-            child: const SizedBox(
-              height: 60,
-              child: Icon(Icons.refresh),
+          // [새로고침]
+          Expanded(
+            child: GestureDetector(
+              onTap: _refresh,
+              child: const SizedBox(
+                height: 60,
+                child: Icon(Icons.refresh),
+              ),
             ),
           ),
-        ),
-        // [새로고침]
+          // [새로고침]
 
-        // [닫기]
-        Expanded(
-          child: GestureDetector(
-            onTap: _close,
-            child: const SizedBox(
-              height: 60,
-              child: Icon(Icons.close),
+          // [닫기]
+          Expanded(
+            child: GestureDetector(
+              onTap: _close,
+              child: const SizedBox(
+                height: 60,
+                child: Icon(Icons.close),
+              ),
             ),
           ),
-        ),
-        // [닫기]
-      ],
+          // [닫기]
+        ],
+      ),
     );
   }
 
@@ -203,7 +206,6 @@ class _WebViewPageState extends State<WebViewPage> {
       onPopInvoked: (didPop) => _back(),
       child: Scaffold(
         body: SafeArea(
-          bottom: false,
           child: InAppWebView(
             key: webViewKey,
             initialUrlRequest: URLRequest(url: WebUri("https://drawli.ai")),
