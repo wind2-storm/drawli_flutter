@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+<!--    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />다운로드 파일 확장자가 apk일때는 다운로드를 못받게 되어있는데-->
 
     // AndroidManifest.xml
 
