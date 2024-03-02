@@ -235,6 +235,16 @@ class _WebViewPageState extends State<WebViewPage> {
     return NavigationActionPolicy.ALLOW;
   }
 
+  _createFileFromBase64(String base64content, String fileName, String yourExtension) async {
+    var bytes = base64Decode(base64content.replaceAll('\n', ''));
+    final output = await getExternalStorageDirectory();
+    final file = File("${output?.path}/$fileName.$yourExtension");
+    await file.writeAsBytes(bytes.buffer.asUint8List());
+    print("${output?.path}/${fileName}.$yourExtension");
+    await OpenFile.open("${output?.path}/$fileName.$yourExtension");
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -254,29 +264,45 @@ class _WebViewPageState extends State<WebViewPage> {
               // web view file download !!
               // ex) window.flutter_inappwebview.callHandler('fileDownload', url);
               // url = pdf file url
-              controller.addJavaScriptHandler(
-                handlerName: "fileDownload",
-                callback: (data) async {
-                  print("download log----");
-                  print(data);
-                  print("--------------");
-                  if (data.isNotEmpty) {
-                    final String url = data[0];
+              // controller.addJavaScriptHandler(
+              //   handlerName: "fileDownload",
+              //   callback: (data) async {
+              //     print("download log----");
+              //     print(data);
+              //     print("--------------");
+              //     if (data.isNotEmpty) {
+              //       final String url = data[0];
+              //
+              //       // 파일 다운로드 경로 가져오기
+              //       final directory = await getApplicationDocumentsDirectory();
+              //       var savedDirPath = directory.path;
+              //       print('download:$savedDirPath');
+              //       // 파일 다운로드
+              //       await FlutterDownloader.enqueue(
+              //         url: url,
+              //         headers: {},
+              //         savedDir: savedDirPath,
+              //         saveInPublicStorage: true,
+              //         showNotification: true, // notification
+              //         openFileFromNotification: true, // notification
+              //       );
+              //       print('download:2,$url');
+              //     }
+              //   },
+              // );
 
-                    // 파일 다운로드 경로 가져오기
-                    final directory = await getApplicationDocumentsDirectory();
-                    var savedDirPath = directory.path;
-                    print('download:$savedDirPath');
-                    // 파일 다운로드
-                    await FlutterDownloader.enqueue(
-                      url: url,
-                      headers: {},
-                      savedDir: savedDirPath,
-                      saveInPublicStorage: true,
-                      showNotification: true, // notification
-                      openFileFromNotification: true, // notification
-                    );
-                    print('download:2,$url');
+              controller.addJavaScriptHandler(
+                handlerName: 'blobToBase64Handler',
+                callback: (data) async {
+                  if (data.isNotEmpty) {
+                    final String receivedFileInBase64 = data[0];
+                    final String receivedMimeType = data[1];
+                    final String fileName = data[2];
+
+                    const String yourExtension = 'pdf'; // 'pdf'
+
+                    _createFileFromBase64(
+                        receivedFileInBase64, fileName, yourExtension);
                   }
                 },
               );
