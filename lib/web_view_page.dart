@@ -95,8 +95,28 @@ class _WebViewPageState extends State<WebViewPage> {
   Widget _navigationBar() {
     return Padding(
       padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
+      child : Container(
+        // color: Colors.lightBlue,
       child: Row(
         children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: _make_image,
+              child: const SizedBox(
+                height: 60,
+                child: Icon(Icons.portrait),
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: _coloring_paint,
+              child: const SizedBox(
+                height: 60,
+                child: Icon(Icons.color_lens),
+              ),
+            ),
+          ),
           // [뒤로가기]
           Expanded(
             child: GestureDetector(
@@ -134,17 +154,18 @@ class _WebViewPageState extends State<WebViewPage> {
           // [새로고침]
 
           // [닫기]
-          Expanded(
-            child: GestureDetector(
-              onTap: _close,
-              child: const SizedBox(
-                height: 60,
-                child: Icon(Icons.close),
-              ),
-            ),
-          ),
+          // Expanded(
+          //   child: GestureDetector(
+          //     onTap: _close,
+          //     child: const SizedBox(
+          //       height: 60,
+          //       child: Icon(Icons.close),
+          //     ),
+          //   ),
+          // ),
           // [닫기]
         ],
+      ),
       ),
     );
   }
@@ -185,7 +206,22 @@ class _WebViewPageState extends State<WebViewPage> {
       exit(0);
     }
   }
-
+  void _make_image() {
+    // FIXME : url 새로 로드하는법
+    webViewController.loadUrl(
+      urlRequest: URLRequest(
+          url: WebUri('https://drawli.ai/draw')
+    ),
+    );
+  }
+  void _coloring_paint() {
+    // FIXME : url 새로 로드하는법
+    webViewController.loadUrl(
+      urlRequest: URLRequest(
+          url: WebUri('https://drawli.ai/paint')
+      ),
+    );
+  }
   /// toss payments scheme
   tossPaymentsWebview(url) {
     final appScheme = ConvertUrl(url); // Intent URL을 앱 스킴 URL로 변환
@@ -208,7 +244,8 @@ class _WebViewPageState extends State<WebViewPage> {
         body: SafeArea(
           child: InAppWebView(
             key: webViewKey,
-            initialUrlRequest: URLRequest(url: WebUri("https://drawli.ai")),
+            initialUrlRequest: URLRequest(url: WebUri("https://drawli.ai")),//https://112.169.48.197:15321/
+            // initialUrlRequest: URLRequest(url: WebUri("https://112.169.48.197:15321/")),
             initialSettings: settings,
             pullToRefreshController: pullToRefreshController,
             onWebViewCreated: (controller) {
@@ -220,13 +257,16 @@ class _WebViewPageState extends State<WebViewPage> {
               controller.addJavaScriptHandler(
                 handlerName: "fileDownload",
                 callback: (data) async {
+                  print("download log----");
+                  print(data);
+                  print("--------------");
                   if (data.isNotEmpty) {
                     final String url = data[0];
 
                     // 파일 다운로드 경로 가져오기
                     final directory = await getApplicationDocumentsDirectory();
                     var savedDirPath = directory.path;
-
+                    print('download:$savedDirPath');
                     // 파일 다운로드
                     await FlutterDownloader.enqueue(
                       url: url,
@@ -236,6 +276,7 @@ class _WebViewPageState extends State<WebViewPage> {
                       showNotification: true, // notification
                       openFileFromNotification: true, // notification
                     );
+                    print('download:2,$url');
                   }
                 },
               );
@@ -327,8 +368,12 @@ class _WebViewPageState extends State<WebViewPage> {
             }
           ),
         ),
-        bottomNavigationBar: _navigationBar(),
+        bottomNavigationBar: _navigationBar(
+        ),
       ),
     );
   }
 }
+
+// privacy page 외부 창에서 띄우기
+// window.flutter_inappwebview.callHandler('fileDownload', url);

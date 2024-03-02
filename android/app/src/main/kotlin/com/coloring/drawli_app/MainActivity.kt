@@ -1,4 +1,4 @@
-package com.drawli.drawli_flutter
+package com.coloring.drawli_app
 
 import io.flutter.embedding.android.FlutterActivity
 
