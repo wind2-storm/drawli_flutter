@@ -235,13 +235,20 @@ class _WebViewPageState extends State<WebViewPage> {
     return NavigationActionPolicy.ALLOW;
   }
 
+  // window.flutter_inappwebview.callHandler('fileDownload', decodedFile, mimeType, fileName); //웹 코드.
   _createFileFromBase64(String base64content, String fileName, String yourExtension) async {
     var bytes = base64Decode(base64content.replaceAll('\n', ''));
+    print("-----create file--------");
+    // print(base64content);
+    // print(bytes);
+    // print(yourExtension);
     final output = await getExternalStorageDirectory();
-    final file = File("${output?.path}/$fileName.$yourExtension");
+    // final file = File("${output?.path}/$fileName.$yourExtension");
+    final file = File("${output?.path}/$fileName.pdf");
     await file.writeAsBytes(bytes.buffer.asUint8List());
     print("${output?.path}/${fileName}.$yourExtension");
-    await OpenFile.open("${output?.path}/$fileName.$yourExtension");
+    // await OpenFile.open("${output?.path}/$fileName.$yourExtension");
+    await OpenFile.open("${output?.path}/$fileName.pdf");
     setState(() {});
   }
 
@@ -292,9 +299,14 @@ class _WebViewPageState extends State<WebViewPage> {
               // );
 
               controller.addJavaScriptHandler(
-                handlerName: 'blobToBase64Handler',
+                // print("-----file donwload-------");
+                // handlerName: 'blobToBase64Handler',
+                handlerName: 'fileDownload',
                 callback: (data) async {
+                  print("-----file donwload-------");
                   if (data.isNotEmpty) {
+                    print(data);
+                    print("-----------");
                     final String receivedFileInBase64 = data[0];
                     final String receivedMimeType = data[1];
                     final String fileName = data[2];

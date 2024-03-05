@@ -18,6 +18,8 @@ dependencies:
 
   url_launcher: ^6.2.5
 
+  lottie: ^1.0.1
+
   # tosspayment
   tosspayments_sdk_flutter: ^0.2.0
 
@@ -41,3 +43,6 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+assets:
+  - assets/lottie/splash_fast.json

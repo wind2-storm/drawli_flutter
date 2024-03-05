@@ -10,7 +10,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'splash.dart';
 import 'web_view_page.dart';
 
 // background notification push event!!
@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter App',
       debugShowCheckedModeBanner: false,
-      home: WebViewPage(),
+      home: WebViewPage(),//SplashScreen(),//
     );
   }
 }
