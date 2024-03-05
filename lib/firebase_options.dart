@@ -47,29 +47,28 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDSTaRTxtimd4YdDu-DFMx_CVSUwtKp8vA',
-    appId: '1:83757875514:web:7d4f3de7c560dec2359003',
-    messagingSenderId: '83757875514',
-    projectId: 'drawli-android',
-    authDomain: 'drawli-android.firebaseapp.com',
-    storageBucket: 'drawli-android.appspot.com',
-    measurementId: 'G-HNH70PWYZ7',
+    apiKey: 'AIzaSyDsCFVjR2D-gk5_xTODK3Gmvqvj-um4pIM',
+    appId: '1:751992999241:web:f1f627abf7c12a3f7ade98',
+    messagingSenderId: '751992999241',
+    projectId: 'drawli-ebe40',
+    authDomain: 'drawli-ebe40.firebaseapp.com',
+    storageBucket: 'drawli-ebe40.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCDeGm_Qy2jUaIp0jKvCEANdHiPVdExqKY',
-    appId: '1:83757875514:android:be4d713f228c8b1f359003',
-    messagingSenderId: '83757875514',
-    projectId: 'drawli-android',
-    storageBucket: 'drawli-android.appspot.com',
+    apiKey: 'AIzaSyBHRBy0y3WPTBz-RxyN7vk2B4JVxkDqobc',
+    appId: '1:751992999241:android:1ea6f99817dddfe47ade98',
+    messagingSenderId: '751992999241',
+    projectId: 'drawli-ebe40',
+    storageBucket: 'drawli-ebe40.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD11sjgv7-yyaF4oKnaFuVB3STGDB_6vcw',
-    appId: '1:83757875514:ios:c100f2d2b66ee72b359003',
-    messagingSenderId: '83757875514',
-    projectId: 'drawli-android',
-    storageBucket: 'drawli-android.appspot.com',
-    iosBundleId: 'com.drawli.drawliFlutter',
+    apiKey: 'AIzaSyDjmEJCHFfSYzZii1Tl2siilQP4WUFLOm0',
+    appId: '1:751992999241:ios:6a876381330dd0137ade98',
+    messagingSenderId: '751992999241',
+    projectId: 'drawli-ebe40',
+    storageBucket: 'drawli-ebe40.appspot.com',
+    iosBundleId: 'com.drawli.drawliFlutter.RunnerTests',
   );
 }

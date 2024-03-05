@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "83757875514",
-    "project_id": "drawli-android",
-    "storage_bucket": "drawli-android.appspot.com"
+    "project_number": "751992999241",
+    "project_id": "drawli-ebe40",
+    "storage_bucket": "drawli-ebe40.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:83757875514:android:be4d713f228c8b1f359003",
+        "mobilesdk_app_id": "1:751992999241:android:1ea6f99817dddfe47ade98",
         "android_client_info": {
           "package_name": "com.coloring.drawli_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCDeGm_Qy2jUaIp0jKvCEANdHiPVdExqKY"
+          "current_key": "AIzaSyBHRBy0y3WPTBz-RxyN7vk2B4JVxkDqobc"
         }
       ],
       "services": {
